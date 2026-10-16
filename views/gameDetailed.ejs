@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= game.name %></title>
+    </head>
+    <body>
+        <%- include("partials/header") %>
+        <h1><%= game.name %></h1>
+        <p>Blurb: <%= game.short_description %></p>
+        <% if (game.description) { %>
+        <p>Description: <%= game.description %></p>
+        <% } %>
+        <p>Developer: <a href="/search?developer=<%= developer.name %>"><%= developer.name %></a></p>
+        <p>Genre(s):</p>
+        <ul>
+            <% for (const genre of genres) { %>
+                <li><a href="/search?genre=<%= genre.name %>"><%= genre.name %></a></li>
+            <% } %>
+        </ul>
+    </body>
+</html>

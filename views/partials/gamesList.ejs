@@ -1,0 +1,8 @@
+<%- include("searchForm") %>
+<ul>
+    <% for (const game of data) { %>
+        <li>
+            <%- include("gameSimple", { game }) %>
+        </li>
+    <% } %>
+</ul>
