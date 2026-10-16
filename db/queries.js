@@ -54,7 +54,7 @@ async function getGameDeveloper(gameId) {
 async function getGameGenres(gameId) {
   return (
     await pool.query(
-      "SELECT * FROM genres WHERE id = (SELECT genre_id FROM game_genres WHERE game_id = $1)",
+      "SELECT * FROM genres WHERE id IN (SELECT genre_id FROM game_genres WHERE game_id = $1)",
       [gameId],
     )
   ).rows;
