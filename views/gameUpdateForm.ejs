@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= game.name %></title>
+    </head>
+    <body>
+        <%- include("partials/header") %>
+        <h1><%= game.name %></h1>
+        <form action="/game/<%= game.id %>/update" method="POST">
+            <label>
+                Game:
+                <input type="text" name="game" id="game" placeholder=<%= game.name %> value="<%= game.name %>" required>
+            </label>
+            <label>
+                Short description:
+                <textarea name="gameShortDesc" id="gameShortDesc" placeholder=<%= game.short_description ? game.short_description : "" %> required><%= game.short_description ? game.short_description : "" %></textarea>
+            </label>
+            <label>
+                Long description:
+                <textarea name="gameLongDesc" id="gameLongDesc" placeholder=<%= game.description ? game.description : "" %> required><%= game.description ? game.description : "" %></textarea>
+            </label>
+            <button type="submit">Update</button>
+        </form>
+    </body>
+</html>

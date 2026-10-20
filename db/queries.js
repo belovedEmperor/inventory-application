@@ -102,6 +102,13 @@ async function createGameGenreJunction(gameId, genreId) {
   );
 }
 
+async function updateGame(gameId, game, gameShortDesc, gameLongDesc) {
+  await pool.query(
+    "UPDATE games SET name = $2, short_description = $3, description = $4 WHERE id = $1",
+    [gameId, game, gameShortDesc, gameLongDesc],
+  );
+}
+
 module.exports = {
   getGames,
   getAllDevelopers,
@@ -115,4 +122,5 @@ module.exports = {
   createDeveloper,
   createGenre,
   createGameGenreJunction,
+  updateGame,
 };

@@ -36,6 +36,23 @@ async function gameDetailedGet(req, res) {
   res.render("gameDetailed", { game, developer, genres });
 }
 
+async function gameUpdateGet(req, res) {
+  const game = await db.getGame(req.params.id);
+  const developer = await db.getGameDeveloper(game.id);
+  const genres = await db.getGameGenres(game.id);
+
+  res.render("gameUpdateForm", { game, developer, genres });
+}
+
+async function gameUpdatePost(req, res) {
+  const gameId = req.params.id;
+  const { game, gameShortDesc, gameLongDesc } = req.body;
+
+  await db.updateGame(gameId, game, gameShortDesc, gameLongDesc);
+
+  res.redirect(`/game/${gameId}`);
+}
+
 async function gameNewGet(req, res) {
   res.render("newGameForm", { title: "New" });
 }
@@ -66,4 +83,6 @@ module.exports = {
   gameDetailedGet,
   gameNewGet,
   gameNewPost,
+  gameUpdateGet,
+  gameUpdatePost,
 };

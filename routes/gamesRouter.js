@@ -9,6 +9,8 @@ gamesRouter.get("/developers", gamesController.developersListGet);
 gamesRouter.get("/genres", gamesController.genresListGet);
 
 gamesRouter.get("/game/:id", gamesController.gameDetailedGet);
+gamesRouter.get("/game/:id/update", gamesController.gameUpdateGet);
+gamesRouter.post("/game/:id/update", gamesController.gameUpdatePost);
 
 gamesRouter.get("/new", gamesController.gameNewGet);
 gamesRouter.post("/new", gamesController.gameNewPost);
