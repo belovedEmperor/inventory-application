@@ -11,6 +11,7 @@ gamesRouter.get("/genres", gamesController.genresListGet);
 gamesRouter.get("/game/:id", gamesController.gameDetailedGet);
 gamesRouter.get("/game/:id/update", gamesController.gameUpdateGet);
 gamesRouter.post("/game/:id/update", gamesController.gameUpdatePost);
+gamesRouter.post("/game/:id/delete", gamesController.gameDeletePost);
 
 gamesRouter.get("/new", gamesController.gameNewGet);
 gamesRouter.post("/new", gamesController.gameNewPost);

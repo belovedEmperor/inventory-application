@@ -109,6 +109,10 @@ async function updateGame(gameId, game, gameShortDesc, gameLongDesc) {
   );
 }
 
+async function deleteGame(gameId) {
+  await pool.query("DELETE FROM games WHERE id = $1", [gameId]);
+}
+
 module.exports = {
   getGames,
   getAllDevelopers,
@@ -123,4 +127,5 @@ module.exports = {
   createGenre,
   createGameGenreJunction,
   updateGame,
+  deleteGame,
 };

@@ -53,6 +53,14 @@ async function gameUpdatePost(req, res) {
   res.redirect(`/game/${gameId}`);
 }
 
+async function gameDeletePost(req, res) {
+  const gameId = req.params.id;
+
+  await db.deleteGame(gameId);
+
+  res.redirect("/");
+}
+
 async function gameNewGet(req, res) {
   res.render("newGameForm", { title: "New" });
 }
@@ -85,4 +93,5 @@ module.exports = {
   gameNewPost,
   gameUpdateGet,
   gameUpdatePost,
+  gameDeletePost,
 };
