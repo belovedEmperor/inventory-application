@@ -57,6 +57,7 @@ async function gameDeletePost(req, res) {
   const gameId = req.params.id;
 
   await db.deleteGame(gameId);
+  await db.deleteGenreJunctions(gameId);
 
   res.redirect("/");
 }
