@@ -8,6 +8,7 @@
     <body>
         <%- include("partials/header") %>
         <h1><%= title %></h1>
+        <a href="/new">Create new game</a>
         <ul>
             <% const listString = type + "List" %>
             <%- include(`partials/${listString}`, { data }) %>
