@@ -5,7 +5,7 @@ const gamesRouter = require("./routes/gamesRouter");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use("/", gamesRouter);
 
 const PORT = process.env.SERVER_PORT || 3000;

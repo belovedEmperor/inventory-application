@@ -36,9 +36,34 @@ async function gameDetailedGet(req, res) {
   res.render("gameDetailed", { game, developer, genres });
 }
 
+async function gameNewGet(req, res) {
+  res.render("newGameForm", { title: "New" });
+}
+
+async function gameNewPost(req, res) {
+  const { game, gameShortDesc, gameLongDesc, developer, genres } = req.body;
+
+  const developerId = await db.createDeveloper(developer);
+  const gameId = await db.createGame(
+    game,
+    gameShortDesc,
+    gameLongDesc,
+    developerId,
+  );
+
+  for (const genre of genres.split(",")) {
+    const genreId = await db.createGenre(genre);
+    await db.createGameGenreJunction(gameId, genreId);
+  }
+
+  res.redirect("/");
+}
+
 module.exports = {
   gamesListGet,
   developersListGet,
   genresListGet,
   gameDetailedGet,
+  gameNewGet,
+  gameNewPost,
 };

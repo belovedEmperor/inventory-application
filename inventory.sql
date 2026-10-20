@@ -1,24 +1,19 @@
-CREATE TABLE games (
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name TEXT UNIQUE NOT NULL,
-    short_description VARCHAR(150) NOT NULL,
-    description TEXT
-);
-
 CREATE TABLE developers (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name TEXT UNIQUE NOT NULL
 );
 
+CREATE TABLE games (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name TEXT UNIQUE NOT NULL,
+    short_description VARCHAR(150) NOT NULL,
+    description TEXT,
+    developer_id INT REFERENCES developers(id) NOT NULL
+);
+
 CREATE TABLE genres (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name TEXT UNIQUE NOT NULL
-);
-
-CREATE TABLE game_developers (
-    game_id INT NOT NULL REFERENCES games(id) ON DELETE CASCADE,
-    developer_id INT NOT NULL REFERENCES developers(id) ON DELETE CASCADE,
-    PRIMARY KEY (game_id, developer_id)
 );
 
 CREATE TABLE game_genres (

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= title %></title>
+    </head>
+    <body>
+        <%- include("partials/header") %>
+        <h1><%= title %></h1>
+        <form action="/new" method="POST">
+            <label>
+                Game:
+                <input type="text" name="game" id="game" required>
+            </label>
+            <label>
+                Short description:
+                <textarea name="gameShortDesc" id="gameShortDesc" required></textarea>
+            </label>
+            <label>
+                Long description:
+                <textarea name="gameLongDesc" id="gameLongDesc"></textarea>
+            </label>
+            <label>
+                Developer:
+                <input type="text" name="developer" id="developer" required>
+            </label>
+            <label>
+                Genres (separate by ","):
+                <input type="text" name="genres" id="genres" required>
+            </label>
+            <button type="submit">Create</button>
+        </form>
+    </body>
+</html>
+

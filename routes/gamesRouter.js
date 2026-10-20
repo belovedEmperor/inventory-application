@@ -10,4 +10,7 @@ gamesRouter.get("/genres", gamesController.genresListGet);
 
 gamesRouter.get("/game/:id", gamesController.gameDetailedGet);
 
+gamesRouter.get("/new", gamesController.gameNewGet);
+gamesRouter.post("/new", gamesController.gameNewPost);
+
 module.exports = gamesRouter;
